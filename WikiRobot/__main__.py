@@ -92,7 +92,7 @@ PM_START_TEXT = """
 
 buttons = [
     [
-        InlineKeyboardButton(text="About wiki Robot", callback_data="wiki_"),
+        InlineKeyboardButton(text="About Wiki W", callback_data="wiki_"),
     ],
     [
         InlineKeyboardButton(text="Get Help", callback_data="help_back"),
@@ -102,7 +102,7 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="➗ Add wiki To Your Group ➗", url="t.me/EmiexRobot?startgroup=new"),
+            text="➗ Add Wiki To Your Group ➗", url="t.me/WikiTapiBot?startgroup=new"),
     ],
 ]
 
@@ -360,14 +360,14 @@ def wiki_about_callback(update, context):
     query = update.callback_query
     if query.data == "wiki_":
         query.message.edit_text(
-            text="๏ I'm *wiki*, a powerful group management bot built to help you manage your group easily."
+            text="๏ I'm *Wiki*, a powerful group management bot built to help you manage your group easily."
             "\n• I can restrict users."
             "\n• I can greet users with customizable welcome messages and even set a group's rules."
             "\n• I have an advanced anti-flood system."
             "\n• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
             "\n• I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
             "\n• I check for admins' permissions before executing any command and more stuffs"
-            "\n\n_wiki's licensed under the GNU General Public License v3.0_"
+            "\n\n_Wiki's licensed under the GNU General Public License v3.0_"
             "\n\n Click on button bellow to get basic help for WikiRobot.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -382,7 +382,7 @@ def wiki_about_callback(update, context):
                     InlineKeyboardButton(text="Credits", callback_data="wiki_credit"),
                  ],
                  [
-                    InlineKeyboardButton(text="Source Code", url="https://github.com/kennedy-ex/WikiRobot"),
+                    InlineKeyboardButton(text="Source Code", url="https://github.com/Wiki28/WikiRobot"),
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="wiki_back"),
@@ -441,8 +441,8 @@ def wiki_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Support", url="t.me/wikisupport"),
-                    InlineKeyboardButton(text="Updates", url="https://t.me/WikiProjects"),
+                    InlineKeyboardButton(text="Support", url="t.me/WikiTapiGroup"),
+                    InlineKeyboardButton(text="Updates", url="https://t.me/WikiTapiChannel"),
                  ],
                  [
                     InlineKeyboardButton(text="Go Back", callback_data="wiki_"),
