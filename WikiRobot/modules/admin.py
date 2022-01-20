@@ -5,9 +5,9 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from EmikoRobot import DRAGONS, dispatcher
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.chat_status import (
+from WikiRobot import DRAGONS, dispatcher
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_pin,
     can_promote,
@@ -16,13 +16,13 @@ from EmikoRobot.modules.helper_funcs.chat_status import (
     ADMIN_CACHE,
 )
 
-from EmikoRobot.modules.helper_funcs.admin_rights import user_can_changeinfo, user_can_promote
-from EmikoRobot.modules.helper_funcs.extraction import (
+from WikiRobot.modules.helper_funcs.admin_rights import user_can_changeinfo, user_can_promote
+from WikiRobot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from EmikoRobot.modules.log_channel import loggable
-from EmikoRobot.modules.helper_funcs.alternate import send_message
+from WikiRobot.modules.log_channel import loggable
+from WikiRobot.modules.helper_funcs.alternate import send_message
 
 
 @bot_admin
@@ -921,8 +921,8 @@ def button(update: Update, context: CallbackContext) -> str:
   
 __help__ = """
 *User Commands*:
-❂ /admins*:* list of admins in the chat
-❂ /pinned*:* to get the current pinned message.
+❂ /admins*:* daftar admin di chat
+❂ /pinned*:* untuk mendapatkan pesan yang disematkan saat ini.
 
 *The Following Commands are Admins only:* 
 ❂ /pin*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
