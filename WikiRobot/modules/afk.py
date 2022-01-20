@@ -1,13 +1,13 @@
 
 import random, html
 
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.disable import (
+from WikiRobot import dispatcher
+from WikiRobot.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from EmikoRobot.modules.sql import afk_sql as sql
-from EmikoRobot.modules.users import get_user_id
+from WikiRobot.modules.sql import afk_sql as sql
+from WikiRobot.modules.users import get_user_id
 from telegram import MessageEntity, Update
 from telegram.error import BadRequest
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -31,7 +31,7 @@ def afk(update: Update, context: CallbackContext):
     if not user:  # ignore channels
         return
 
-    if user.id in [777000, 1087968824]:
+    if user.id in [777000, 2133434438, 1980553307]:
         return
 
     notice = ""
@@ -39,7 +39,7 @@ def afk(update: Update, context: CallbackContext):
         reason = args[1]
         if len(reason) > 100:
             reason = reason[:100]
-            notice = "\nYour afk reason was shortened to 100 characters."
+            notice = "\nAlasan afk Anda dipersingkat menjadi 100 karakter."
     else:
         reason = ""
 
@@ -65,14 +65,13 @@ def no_longer_afk(update: Update, context: CallbackContext):
         firstname = update.effective_user.first_name
         try:
             options = [
-                "{} is here!",
-                "{} is back!",
-                "{} is now in the chat!",
-                "{} is awake!",
-                "{} is back online!",
-                "{} is finally here!",
-                "Welcome back! {}",
-                "Where is {}?\nIn the chat!",
+                "{} di sini!",
+                "{} kembali!",
+                "{} sekarang dalam obrolan!",
+                "{} sudah bangun!",
+                "{} kembali online!",
+                "{} akhirnya di sini!",
+       
             ]
             chosen_option = random.choice(options)
             update.effective_message.reply_text(chosen_option.format(firstname))
