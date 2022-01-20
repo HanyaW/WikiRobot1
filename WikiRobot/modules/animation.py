@@ -4,9 +4,9 @@ from typing import List
 from telegram import Update
 from telegram.ext import run_async, CallbackContext
 
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin
+from WikiRobot import dispatcher
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.helper_funcs.chat_status import user_admin
 
 # sleep how many times after each edit in 'love'
 EDIT_SLEEP = 1
@@ -108,8 +108,8 @@ love_siren = [
 
 
 hack_you = [
-    "Looking for WhatsApp databases in targeted person...",
-    " User online: True\nTelegram access: True\nRead Storage: True ",
+    "Mencari database WhatsApp di orang yang ditargetkan...",
+    " Pengguna online: True\nAkses Telegram: True\nBaca Penyimpanan: True ",
     "Hacking... 20.63%\n[███░░░░░░░░░░░░░░░░░]",
     "Hacking... 86.21%\n[███████████████░░░░░]",
     "Hacking... 93.50%\n[█████████████████░░░]",
