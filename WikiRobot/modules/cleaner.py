@@ -1,14 +1,14 @@
 import html
 
-from EmikoRobot import ALLOW_EXCL, CustomCommandHandler, dispatcher
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.chat_status import (
+from WikiRobot import ALLOW_EXCL, CustomCommandHandler, dispatcher
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.helper_funcs.chat_status import (
     bot_can_delete,
     connection_status,
     dev_plus,
     user_admin,
 )
-from EmikoRobot.modules.sql import cleaner_sql as sql
+from WikiRobot.modules.sql import cleaner_sql as sql
 from telegram import ParseMode, Update
 from telegram.ext import (
     CallbackContext,
