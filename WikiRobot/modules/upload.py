@@ -7,9 +7,9 @@ import traceback
 import aiohttp
 from telethon import events
 
-from EmikoRobot import telethn as bot
-from EmikoRobot.modules.urluploader import download_file
-from EmikoRobot.utils.uputils import humanbytes, progress
+from WikiRobot import telethn as bot
+from WikiRobot.modules.urluploader import download_file
+from WikiRobot.utils.uputils import humanbytes, progress
 
 DOWNLOADPATH = "Downloads/"
 
