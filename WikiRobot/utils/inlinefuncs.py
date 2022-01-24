@@ -22,22 +22,22 @@ from pyrogram.types import (CallbackQuery,
                             InputTextMessageContent)
 from search_engine_parser import GoogleSearch
 
-from EmikoRobot import (
+from WikiRobot import (
     DEV_USERS,
     EVENT_LOGS, 
     BOT_USERNAME,
     ubot2,
 )
-from EmikoRobot import pbot as app 
-from EmikoRobot import arq
-from EmikoRobot.services.keyboard import Ikb
-from EmikoRobot.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
-from EmikoRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
-from EmikoRobot.services.types import InlineQueryResultCachedDocument
-from EmikoRobot.modules.info import get_chat_info, get_user_info
-from EmikoRobot.modules.music import download_youtube_audio
-from EmikoRobot.utils.functions import test_speedtest
-from EmikoRobot.utils.pastebin import paste
+from WikiRobot import pbot as app 
+from WikiRobot import arq
+from WikiRobot.services.keyboard import Ikb
+from WikiRobot.utils.pluginhelper import convert_seconds_to_minutes as time_convert, fetch
+from WikiRobot.services.tasks import _get_tasks_text, all_tasks, rm_task
+from WikiRobot.services.types import InlineQueryResultCachedDocument
+from WikiRobot.modules.info import get_chat_info, get_user_info
+from WikiRobot.modules.music import download_youtube_audio
+from WikiRobot.utils.functions import test_speedtest
+from WikiRobot.utils.pastebin import paste
 
 MESSAGE_DUMP_CHAT = EVENT_LOGS
 
@@ -122,20 +122,20 @@ async def alive_function(answers):
     )
 
     msg = f"""
-**[Emiko Robot ❤️](https://t.me/emikosupport):**
+**[Wiki W ❤️](https://t.me/WikiTapiGroup):**
 **MainBot:** `{bot_state}`
 **UserBot:** `{ubot_state}`
 **Python:** `{pyver.split()[0]}`
 **Pyrogram:** `{pyrover}`
 **MongoDB:** `{mongover}`
 **Platform:** `{sys.platform}`
-**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [UBOT](t.me/excrybaby)
+**Profiles:** [BOT](t.me/{BOT_USERNAME}) | [UBOT](t.me/WikiTapiOrang)
 """
     answers.append(
         InlineQueryResultArticle(
             title="Alive",
             description="Check Bot's Stats",
-            thumb_url="https://telegra.ph/file/1b8f08dba704a5eb2bb09.jpg",
+            thumb_url="https://telegra.ph/file/b4c7a40cd47718aabac58.jpg",
             input_message_content=InputTextMessageContent(
                 msg, disable_web_page_preview=True
             ),
