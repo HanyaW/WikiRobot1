@@ -3,9 +3,9 @@ import re
 from typing import Optional
 
 import telegram
-from EmikoRobot import TIGERS, WOLVES, dispatcher
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.chat_status import (
+from WikiRobot import TIGERS, WOLVES, dispatcher
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_restrict,
     is_user_admin,
@@ -14,16 +14,16 @@ from EmikoRobot.modules.helper_funcs.chat_status import (
     user_admin_no_reply,
     can_delete,
 )
-from EmikoRobot.modules.helper_funcs.extraction import (
+from WikiRobot.modules.helper_funcs.extraction import (
     extract_text,
     extract_user,
     extract_user_and_text,
 )
-from EmikoRobot.modules.helper_funcs.filters import CustomFilters
-from EmikoRobot.modules.helper_funcs.misc import split_message
-from EmikoRobot.modules.helper_funcs.string_handling import split_quotes
-from EmikoRobot.modules.log_channel import loggable
-from EmikoRobot.modules.sql import warns_sql as sql
+from WikiRobot.modules.helper_funcs.filters import CustomFilters
+from WikiRobot.modules.helper_funcs.misc import split_message
+from WikiRobot.modules.helper_funcs.string_handling import split_quotes
+from WikiRobot.modules.log_channel import loggable
+from WikiRobot.modules.sql import warns_sql as sql
 from telegram import (
     CallbackQuery,
     Chat,
