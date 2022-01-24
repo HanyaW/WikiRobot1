@@ -16,22 +16,22 @@ from telethon.tl.types import (
 )
 from telethon.utils import is_image, is_video
 
-from EmikoRobot.events import register as tomori
+from WikiRobot.events import register as tomori
 
 
 
-@tomori(pattern="^/whatanime(.*)")
+@tomori(pattern="!/whatanime(.*)")
 async def whatanime(e):
     media = e.media
     if not media:
         r = await e.get_reply_message()
         media = getattr(r, "media", None)
     if not media:
-        await e.reply("`Media required`")
+        await e.reply("`Diperlukan media`")
         return
     ig = is_gif(media) or is_video(media)
     if not is_image(media) and not ig:
-        await e.reply("`Media must be an image or gif or video`")
+        await e.reply("`Media harus berupa gambar atau gif atau video`")
         return
     filename = "file.jpg"
     if not ig and isinstance(media, MessageMediaDocument):
@@ -40,7 +40,7 @@ async def whatanime(e):
             if isinstance(i, DocumentAttributeFilename):
                 filename = i.file_name
                 break
-    cut = await e.reply("`Downloading image..`")
+    cut = await e.reply("`Mengunduh gambar..`")
     content = await e.client.download_media(media, bytes, thumb=-1 if ig else None)
     await cut.edit("`Searching for result..`")
     file = memory_file(filename, content)
@@ -50,7 +50,7 @@ async def whatanime(e):
             resp0 = await raw_resp0.json()
         js0 = resp0.get("result")
         if not js0:
-            await cut.edit("`No results found.`")
+            await cut.edit("`Tidak ada hasil yang ditemukan.`")
             return
         js0 = js0[0]
         text = f'<b>{html.escape(js0["anilist"]["title"]["romaji"])}'
