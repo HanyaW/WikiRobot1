@@ -10,10 +10,10 @@ from telegram.ext import (
     MessageHandler,
 )
 
-import EmikoRobot.modules.sql.users_sql as sql
-from EmikoRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
-from EmikoRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
-from EmikoRobot.modules.sql.users_sql import get_all_users
+import WikiRobot.modules.sql.users_sql as sql
+from WikiRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
+from WikiRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
+from WikiRobot.modules.sql.users_sql import get_all_users
 
 USERS_GROUP = 4
 CHAT_GROUP = 5
@@ -153,7 +153,7 @@ def chat_checker(update: Update, context: CallbackContext):
 
 
 def __user_info__(user_id):
-    if user_id in [777000, 1087968824]:
+    if user_id in [777000, 2133434438]:
         return """╘═━「 Groups count: <code>???</code> 」"""
     if user_id == dispatcher.bot.id:
         return """╘═━「 Groups count: <code>???</code> 」"""
