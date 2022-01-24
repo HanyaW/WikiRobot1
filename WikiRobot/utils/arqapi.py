@@ -4,18 +4,18 @@ from random import randint
 from time import time
 
 import aiohttp
-from EmikoRobot import aiohttpsession 
+from WikiRobot import aiohttpsession 
 from aiohttp import ClientSession
 
 from google_trans_new import google_translator
 from Python_ARQ import ARQ
 from search_engine_parser import GoogleSearch
 
-from EmikoRobot import BOT_ID, OWNER_ID, ARQ_API_URL, ARQ_API_KEY
-from EmikoRobot import pbot
+from WikiRobot import BOT_ID, OWNER_ID, ARQ_API_URL, ARQ_API_KEY
+from WikiRobot import pbot
 
-ARQ_API = "WZQUBA-PFAZQJ-OMIINH-MIVHYM-ARQ"
-ARQ_API_KEY = "WZQUBA-PFAZQJ-OMIINH-MIVHYM-ARQ"
+ARQ_API = "PYHQUD-CYCYBG-GAMOLE-GUSSCA-ARQ"
+ARQ_API_KEY = "PYHQUD-CYCYBG-GAMOLE-GUSSCA-ARQ"
 SUDOERS = OWNER_ID
 ARQ_API_URL = "https://thearq.tech"
 
