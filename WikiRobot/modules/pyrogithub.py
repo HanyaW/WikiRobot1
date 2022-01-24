@@ -1,7 +1,7 @@
 import aiohttp
 from pyrogram import filters
-from EmikoRobot import pbot, BOT_USERNAME
-from EmikoRobot.utils.errors import capture_err
+from WikiRobot import pbot, BOT_USERNAME
+from WikiRobot.utils.errors import capture_err
 
 
 __mod_name__ = "Github"
