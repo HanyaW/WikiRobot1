@@ -1,5 +1,5 @@
-from EmikoRobot import telethn as tbot
-from EmikoRobot.events import register
+from WikiRobot import telethn as tbot
+from WikiRobot.events import register
 import os
 import asyncio
 import os
