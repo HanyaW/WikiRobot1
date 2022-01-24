@@ -1,6 +1,6 @@
-from EmikoRobot import telethn as tbot
+from WikiRobot import telethn as tbot
 import os
-from EmikoRobot.events import register
+from WikiRobot.events import register
 import secureme
 
 
