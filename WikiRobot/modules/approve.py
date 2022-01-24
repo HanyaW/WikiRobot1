@@ -1,11 +1,11 @@
 import html
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot import dispatcher, DRAGONS
-from EmikoRobot.modules.helper_funcs.extraction import extract_user
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot import dispatcher, DRAGONS
+from WikiRobot.modules.helper_funcs.extraction import extract_user
 from telegram.ext import CallbackContext, CallbackQueryHandler
-import EmikoRobot.modules.sql.approve_sql as sql
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin
-from EmikoRobot.modules.log_channel import loggable
+import WikiRobot.modules.sql.approve_sql as sql
+from WikiRobot.modules.helper_funcs.chat_status import user_admin
+from WikiRobot.modules.log_channel import loggable
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
