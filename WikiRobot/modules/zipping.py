@@ -5,9 +5,9 @@ import zipfile
 from telethon import types
 from telethon.tl import functions
 
-from EmikoRobot import TEMP_DOWNLOAD_DIRECTORY
-from EmikoRobot import telethn as client
-from EmikoRobot.events import register
+from WikiRobot import TEMP_DOWNLOAD_DIRECTORY
+from WikiRobot import telethn as client
+from WikiRobot.events import register
 
 
 async def is_register_admin(chat, user):
@@ -38,16 +38,16 @@ async def _(event):
         return
 
     if not event.is_reply:
-        await event.reply("Reply to a file to compress it.")
+        await event.reply("Balas ke file untuk mengompresnya.")
         return
     if event.is_group:
         if not (await is_register_admin(event.input_chat, event.message.sender_id)):
             await event.reply(
-                "Hey, You are not admin. You can't use this command, But you can use in my pm 🙂"
+                "Hei, Anda bukan admin. Anda tidak dapat menggunakan perintah ini, Tetapi Anda dapat menggunakan di Pc saya 🙂"
             )
             return
 
-    mone = await event.reply("⏳️ Please wait...")
+    mone = await event.reply("⏳️ Tunggu sebentar...")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -120,16 +120,16 @@ async def _(event):
         return
 
     if not event.is_reply:
-        await event.reply("Reply to a zip file.")
+        await event.reply("Balas ke file zip.")
         return
     if event.is_group:
         if not (await is_register_admin(event.input_chat, event.message.sender_id)):
             await event.reply(
-                "Hey, You are not admin. You can't use this command, But you can use in my pm 🙂"
+                "Hei, Anda bukan admin. Anda tidak dapat menggunakan perintah ini, Tetapi Anda dapat menggunakan di Pc saya 🙂"
             )
             return
 
-    mone = await event.reply("Processing...")
+    mone = await event.reply("Pengolahan...")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
         os.makedirs(TEMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -149,7 +149,7 @@ async def _(event):
         with zipfile.ZipFile(downloaded_file_name, "r") as zip_ref:
             zip_ref.extractall(extracted)
         filename = sorted(get_lst_of_files(extracted, []))
-        await event.reply("Unzipping now 😌")
+        await event.reply("Buka File Zip sekarang 😌")
         for single_file in filename:
             if os.path.exists(single_file):
                 caption_rts = os.path.basename(single_file)
