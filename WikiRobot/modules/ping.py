@@ -5,9 +5,9 @@ import requests
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, run_async
 
-from EmikoRobot import StartTime, dispatcher
-from EmikoRobot.modules.helper_funcs.chat_status import sudo_plus
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot import StartTime, dispatcher
+from WikiRobot.modules.helper_funcs.chat_status import sudo_plus
+from WikiRobot.modules.disable import DisableAbleCommandHandler
 
 sites_list = {
     "Telegram": "https://api.telegram.org",
@@ -79,7 +79,7 @@ def ping(update: Update, context: CallbackContext):
     uptime = get_readable_time((time.time() - StartTime))
 
     message.edit_text(
-        "<b>PONG</b> ✨\n"
+        "<b>PONG</b> 😑\n"
         "<b>Time Taken:</b> <code>{}</code>\n"
         "<b>Service Uptime:</b> <code>{}</code>".format(telegram_ping, uptime),
         parse_mode=ParseMode.HTML,
