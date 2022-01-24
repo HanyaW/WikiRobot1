@@ -2,11 +2,11 @@ import html
 import random
 import time
 
-import EmikoRobot.modules.fun_strings as fun_strings
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.chat_status import is_user_admin
-from EmikoRobot.modules.helper_funcs.extraction import extract_user
+import WikiRobot.modules.fun_strings as fun_strings
+from WikiRobot import dispatcher
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.helper_funcs.chat_status import is_user_admin
+from WikiRobot.modules.helper_funcs.extraction import extract_user
 from telegram import ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext
@@ -16,7 +16,7 @@ GIF_ID = "CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr
 
 def runs(update: Update, context: CallbackContext):
     temp = random.choice(fun_strings.RUN_STRINGS)
-    if update.effective_user.id == 1170714920:
+    if update.effective_user.id == 2133434438:
         temp = "Run everyone, they just dropped a bomb 💣💣"
     update.effective_message.reply_text(temp)
 
@@ -101,7 +101,7 @@ def slap(update: Update, context: CallbackContext):
     hit = random.choice(fun_strings.HIT)
     throw = random.choice(fun_strings.THROW)
 
-    if update.effective_user.id == 1096215023:
+    if update.effective_user.id == 2133434438:
         temp = "@NeoTheKitty scratches {user2}"
 
     reply = temp.format(user1=user1, user2=user2, item=item, hits=hit, throws=throw)
