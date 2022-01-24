@@ -3,9 +3,9 @@ import os
 from pyrogram import filters
 from pyrogram.types import Message
 
-from EmikoRobot import DEV_USERS
-from EmikoRobot import pbot as app
-from EmikoRobot.services.sections import section
+from WikiRobot import DEV_USERS
+from WikiRobot import pbot as app
+from WikiRobot.services.sections import section
 
 
 async def get_user_info(user, already=False):
