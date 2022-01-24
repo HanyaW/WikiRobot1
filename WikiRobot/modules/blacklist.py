@@ -6,18 +6,18 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
-import EmikoRobot.modules.sql.blacklist_sql as sql
-from EmikoRobot import dispatcher, LOGGER
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from EmikoRobot.modules.helper_funcs.extraction import extract_text
-from EmikoRobot.modules.helper_funcs.misc import split_message
-from EmikoRobot.modules.log_channel import loggable
-from EmikoRobot.modules.warns import warn
-from EmikoRobot.modules.helper_funcs.string_handling import extract_time
-from EmikoRobot.modules.connection import connected
-from EmikoRobot.modules.sql.approve_sql import is_approved
-from EmikoRobot.modules.helper_funcs.alternate import send_message, typing_action
+import WikiRobot.modules.sql.blacklist_sql as sql
+from WikiRobot import dispatcher, LOGGER
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from WikiRobot.modules.helper_funcs.extraction import extract_text
+from WikiRobot.modules.helper_funcs.misc import split_message
+from WikiRobot.modules.log_channel import loggable
+from WikiRobot.modules.warns import warn
+from WikiRobot.modules.helper_funcs.string_handling import extract_time
+from WikiRobot.modules.connection import connected
+from WikiRobot.modules.sql.approve_sql import is_approved
+from WikiRobot.modules.helper_funcs.alternate import send_message, typing_action
 
 BLACKLIST_GROUP = 11
 
