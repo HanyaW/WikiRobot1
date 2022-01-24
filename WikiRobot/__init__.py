@@ -40,7 +40,7 @@ logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLeve
 LOGGER = logging.getLogger('[EmikoRobot]')
 LOGGER.info("Wiki sedang dimulai. | Bagian Wiki Projects. | Licensed under GPLv3.")
 LOGGER.info("Tidak berafiliasi dengan anime atau Penjahat lain dengan cara apa pun.")
-LOGGER.info("Projects dipelihara oleh: github.com/Wiki28 (t.me/WikiStres)")
+LOGGER.info("Projects dipelihara oleh: github.com/Wiki28 (t.me/WikiTapiGroup)")
 
 # if version < 3.9, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 9:
@@ -84,22 +84,22 @@ if ENV:
         raise Exception("Your tiger users list does not contain valid integers.")
 
     INFOPIC = bool(os.environ.get("INFOPIC", True))
-    BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
-    EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
+    BOT_USERNAME = os.environ.get("BOT_USERNAME", "WikiTapiBot")
+    EVENT_LOGS = os.environ.get("EVENT_LOGS", "-1001639024354")
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
     PORT = int(os.environ.get("PORT", 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
-    API_ID = os.environ.get("API_ID", None)
+    API_ID = os.environ.get("API_ID", "12304485")
     ERROR_LOG = os.environ.get("ERROR_LOG", None)
-    API_HASH = os.environ.get("API_HASH", None)
+    API_HASH = os.environ.get("API_HASH", "19d2cf809028a8ee65059bb8fad23146")
     SESSION_STRING = os.environ.get("SESSION_STRING", None)
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
     DB_URL = os.environ.get("DATABASE_URL")
     DB_URL = DB_URL.replace("postgres://", "postgresql://", 1)
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", "BAbt7qxs7uZJEhmaxSa3d3PV")
     MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
-    ARQ_API = os.environ.get("ARQ_API", None)
+    ARQ_API = os.environ.get("ARQ_API", "PYHQUD-CYCYBG-GAMOLE-GUSSCA-ARQ")
     DONATION_LINK = os.environ.get("DONATION_LINK")
     LOAD = os.environ.get("LOAD", "").split()
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
