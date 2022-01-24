@@ -1,17 +1,17 @@
 import html
 from typing import Optional
 
-import EmikoRobot.modules.sql.blsticker_sql as sql
-from EmikoRobot import LOGGER, dispatcher
-from EmikoRobot.modules.connection import connected
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.alternate import send_message
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from EmikoRobot.modules.helper_funcs.misc import split_message
-from EmikoRobot.modules.helper_funcs.string_handling import extract_time
+import WikiRobot.modules.sql.blsticker_sql as sql
+from WikiRobot import LOGGER, dispatcher
+from WikiRobot.modules.connection import connected
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.helper_funcs.alternate import send_message
+from WikiRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from WikiRobot.modules.helper_funcs.misc import split_message
+from WikiRobot.modules.helper_funcs.string_handling import extract_time
 
-from EmikoRobot.modules.log_channel import loggable
-from EmikoRobot.modules.warns import warn
+from WikiRobot.modules.log_channel import loggable
+from WikiRobot.modules.warns import warn
 from telegram import Chat, Message, ParseMode, Update, User, ChatPermissions
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, MessageHandler
