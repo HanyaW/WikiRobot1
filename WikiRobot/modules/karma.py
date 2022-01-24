@@ -3,10 +3,10 @@ from pyrogram import filters
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 
-from EmikoRobot import pbot as app, BOT_ID
-from EmikoRobot.utils.errors import capture_err
-from EmikoRobot.utils.permissions import adminsOnly
-from EmikoRobot.ex_plugins.dbfunctions import (
+from WikiRobot import pbot as app, BOT_ID
+from WikiRobot.utils.errors import capture_err
+from WikiRobot.utils.permissions import adminsOnly
+from WikiRobot.w_plugins.dbfunctions import (
     alpha_to_int,
     get_karma,
     get_karmas,
