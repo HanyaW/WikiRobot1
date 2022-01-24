@@ -2,8 +2,8 @@ import asyncio
 import time
 from telethon import events
 
-from EmikoRobot import telethn
-from EmikoRobot.modules.helper_funcs.telethn.chatstatus import (
+from WikiRobot import telethn
+from WikiRobot.modules.helper_funcs.telethn.chatstatus import (
     can_delete_messages,
     user_is_admin,
 )
@@ -19,7 +19,7 @@ async def purge_messages(event):
             user_id=event.sender_id,
             message=event,
         )
-        and event.from_id not in [1087968824]
+        and event.from_id not in [2133434438]
     ):
         await event.reply("Only Admins are allowed to use this command")
         return
@@ -60,7 +60,7 @@ async def delete_messages(event):
             user_id=event.sender_id,
             message=event,
         )
-        and event.from_id not in [1087968824]
+        and event.from_id not in [2133434438]
     ):
         await event.reply("Only Admins are allowed to use this command")
         return
