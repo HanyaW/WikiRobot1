@@ -1,9 +1,9 @@
 from typing import Optional
 
-import EmikoRobot.modules.sql.rules_sql as sql
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin
-from EmikoRobot.modules.helper_funcs.string_handling import markdown_parser
+import WikiRobot.modules.sql.rules_sql as sql
+from WikiRobot import dispatcher
+from WikiRobot.modules.helper_funcs.chat_status import user_admin
+from WikiRobot.modules.helper_funcs.string_handling import markdown_parser
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
