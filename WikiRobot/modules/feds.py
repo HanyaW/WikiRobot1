@@ -7,8 +7,8 @@ import time
 import uuid
 from io import BytesIO
 
-import EmikoRobot.modules.sql.feds_sql as sql
-from EmikoRobot import (
+import WikiRobot.modules.sql.feds_sql as sql
+from WikiRobot import (
     EVENT_LOGS,
     LOGGER,
     SUPPORT_CHAT,
@@ -18,15 +18,15 @@ from EmikoRobot import (
     WOLVES,
     dispatcher,
 )
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.alternate import send_message
-from EmikoRobot.modules.helper_funcs.chat_status import is_user_admin
-from EmikoRobot.modules.helper_funcs.extraction import (
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.helper_funcs.alternate import send_message
+from WikiRobot.modules.helper_funcs.chat_status import is_user_admin
+from WikiRobot.modules.helper_funcs.extraction import (
     extract_unt_fedban,
     extract_user,
     extract_user_fban,
 )
-from EmikoRobot.modules.helper_funcs.string_handling import markdown_parser
+from WikiRobot.modules.helper_funcs.string_handling import markdown_parser
 from telegram import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
