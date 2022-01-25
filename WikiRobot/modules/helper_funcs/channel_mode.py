@@ -6,8 +6,8 @@ from telegram.ext import CallbackContext
 from telegram.inline.inlinekeyboardbutton import InlineKeyboardButton
 from telegram.inline.inlinekeyboardmarkup import InlineKeyboardMarkup
 
-from SiestaRobot import DRAGONS, DEV_USERS, dispatcher
-from SiestaRobot.modules.helper_funcs.decorators import siestacallback
+from WikiRobot import DRAGONS, DEV_USERS, dispatcher
+from WikiRobot.modules.helper_funcs.decorators import siestacallback
 
 
 class AdminPerms(Enum):
