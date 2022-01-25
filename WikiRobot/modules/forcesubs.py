@@ -10,10 +10,10 @@ from pyrogram.errors.exceptions.bad_request_400 import (
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
 
-from SiestaRobot import DRAGONS as SUDO_USERS
-from SiestaRobot import pbot
-from SiestaRobot.modules.sql import forceSubscribe_sql as sql
-from SiestaRobot.modules.language import gs
+from WikiRobot import DRAGONS as SUDO_USERS
+from WikiRobot import pbot
+from WikiRobot.modules.sql import forceSubscribe_sql as sql
+from WikiRobot.modules.language import gs
 
 logging.basicConfig(level=logging.INFO)
 
