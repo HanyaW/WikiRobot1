@@ -16,10 +16,10 @@ from WikiRobot.w_plugins.dbfunctions import (
     karma_on,
     update_karma,
 )      
-from EmikoRobot.utils.filter_groups import karma_negative_group, karma_positive_group
-from EmikoRobot import arq
+from WikiRobot.utils.filter_groups import karma_negative_group, karma_positive_group
+from WikiRobot import arq
 
-regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|pro|cool|good|👍)$"
+regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|pro|cool|good|maacih|👍)$"
 regex_downvote = r"^(\-|\-\-|\-1|👎|noob|weak)$"
 
 
