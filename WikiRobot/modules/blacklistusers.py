@@ -9,7 +9,7 @@ from WikiRobot import (
     TIGERS,
     WOLVES,
     dispatcher,
-) 
+)
 from WikiRobot.modules.helper_funcs.chat_status import dev_plus
 from WikiRobot.modules.helper_funcs.extraction import (
     extract_user,
