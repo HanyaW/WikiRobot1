@@ -81,41 +81,40 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-*Hello {} !*
-âœª I'm an anime-theme management bot [âœ¨](https://telegra.ph/file/11b5922a33de9968cedfe.jpg)
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-Ã— *Uptime:* `{}`
-Ã— `{}` *users, across* `{}` *chats.*
-â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-âœª Hit /help to see my available commands.
+*Wah Halo Ka {} !*
+────────────────────────
+✪ Saya adalah bot Manager + Music + Streaming Di rancang untuk Memutar Music + Streaming dan Manager Untuk Group Anda.
+✪ Untuk perintah bot music nya lebih detail tekan ABOUT terus  MUSICPLAYER,
+✪ Dikelola oleh @WikiTapiOrang ✨
+────────────────────────
+Tekan /help untuk melihat perintah yang tersedia.
 """
 
 buttons = [
     [
-        InlineKeyboardButton(text="About wiki Robot", callback_data="wiki_"),
+        InlineKeyboardButton(text="About Owner​", url="https://t.me/AboutWiki"),
     ],
     [
-        InlineKeyboardButton(text="Get Help", callback_data="help_back"),
+        InlineKeyboardButton(text="About", callback_data="Wiki_"),
+        InlineKeyboardButton(text="Command​", callback_data="help_back"),
+    ],
+    [
         InlineKeyboardButton(
-            text="Try inline!â€‹â€‹", switch_inline_query_current_chat=""
+            text="➗ Panggil Saya Ke Group​ ➗",
+            url=f"t.me/{dispatcher.bot.username}?startgroup=new",
         ),
-    ],
-    [
-        InlineKeyboardButton(
-            text="âž— Add wiki To Your Group âž—", url="t.me/EmiexRobot?startgroup=new"),
     ],
 ]
 
-
 HELP_STRINGS = """
-Click on the button bellow to get description about specifics command."""
+Klik tombol di bawah ini untuk mendapatkan deskripsi tentang perintah spesifik."""
 
-EMI_IMG = "https://telegra.ph/file/5ff1cb39902809148f07f.jpg"
+EMI_IMG = "https://telegra.ph/file/9b9a27cd02e65046d5515.jpg"
 
-DONATE_STRING = """Heya, glad to hear you want to donate!
- You can support the project by contacting @excrybaby \
- Supporting isnt always financial! \
- Those who cannot provide monetary support are welcome to help us develop the bot at ."""
+DONATE_STRING = """Heya, senang mendengar Anda ingin menyumbang!
+ Anda dapat mendukung proyek dengan menghubungi @WikiTapiOrang \
+ Mendukung tidak selalu finansial! \
+ Mereka yang tidak dapat memberikan dukungan keuangan dipersilakan untuk membantu kami mengembangkan ."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -198,7 +197,13 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
+                        [
+                            [
+                                InlineKeyboardButton(
+                                    text="Go Back", callback_data="help_back"
+                                )
+                            ]
+                        ]
                     ),
                 )
 
@@ -221,21 +226,22 @@ def start(update: Update, context: CallbackContext):
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
-                    sql.num_chats()),                        
+                    sql.num_chats(),
+                ),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-                disable_web_page_preview=False,
+                disable_web_page_preview=True,
             )
     else:
         update.effective_message.reply_text(
-            f"ðŸ‘‹ Hi, I'm {dispatcher.bot.first_name}. Nice to meet You.",
-            parse_mode=ParseMode.HTML
-       )
+            f"<b>Hai, saya Wiki W!</b>\n<b>Mulai bekerja sejak:</b> <code>{uptime}</code>",
+            parse_mode=ParseMode.HTML,
+        )
 
 
 def error_handler(update, context):
-    """Log the error and send a telegram message to notify the developer."""
+    """Catat kesalahan dan kirim pesan telegram untuk memberi tahu pengembang."""
     # Log the error before we do anything else, so we can see it even if something breaks.
     LOGGER.error(msg="Exception while handling an update:", exc_info=context.error)
 
@@ -248,7 +254,7 @@ def error_handler(update, context):
 
     # Build the message with some markup and additional information about what happened.
     message = (
-        "An exception was raised while handling an update\n"
+        "Pengecualian muncul saat menangani pembaruan\n"
         "<pre>update = {}</pre>\n\n"
         "<pre>{}</pre>"
     ).format(
@@ -305,7 +311,7 @@ def help_button(update, context):
         if mod_match:
             module = mod_match.group(1)
             text = (
-                "Here is the help for the *{}* module:\n".format(
+                "Berikut adalah bantuan untuk *{}* module:\n".format(
                     HELPABLE[module].__mod_name__
                 )
                 + HELPABLE[module].__help__
@@ -356,175 +362,169 @@ def help_button(update, context):
         pass
 
 
-def wiki_about_callback(update, context):
+def Wiki_about_callback(update, context):
     query = update.callback_query
-    if query.data == "wiki_":
+    if query.data == "Wiki_":
         query.message.edit_text(
-            text="à¹ I'm *wiki*, a powerful group management bot built to help you manage your group easily."
-            "\nâ€¢ I can restrict users."
-            "\nâ€¢ I can greet users with customizable welcome messages and even set a group's rules."
-            "\nâ€¢ I have an advanced anti-flood system."
-            "\nâ€¢ I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc."
-            "\nâ€¢ I have a note keeping system, blacklists, and even predetermined replies on certain keywords."
-            "\nâ€¢ I check for admins' permissions before executing any command and more stuffs"
-            "\n\n_wiki's licensed under the GNU General Public License v3.0_"
-            "\n\n Click on button bellow to get basic help for WikiRobot.",
+            text="๏ Saya *Wiki W*, bot manajemen grup yang kuat yang dibuat untuk membantu Anda mengelola grup dengan mudah."
+            "\n• Saya dapat membatasi pengguna."
+            "\n• Saya dapat menyapa pengguna dengan pesan selamat datang yang dapat disesuaikan dan bahkan menetapkan aturan grup."
+            "\n• Saya memiliki sistem anti-banjir yang canggih."
+            "\n• Saya dapat memperingatkan pengguna sampai mereka mencapai peringatan maksimal.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Admins", callback_data="wiki_admin"),
-                    InlineKeyboardButton(text="Notes", callback_data="wiki_notes"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Support", callback_data="wiki_support"),
-                    InlineKeyboardButton(text="Credits", callback_data="wiki_credit"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Source Code", url="https://github.com/kennedy-ex/WikiRobot"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="wiki_back"),
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="ᴀᴅᴍɪɴs​", callback_data="Wiki_admin"
+                        ),
+                        InlineKeyboardButton(
+                            text="ɴᴏᴛᴇs​", callback_data="Wiki_notes"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="sᴜᴘᴘᴏʀᴛ​", callback_data="Wiki_support"
+                        ),
+                        InlineKeyboardButton(
+                            text="ᴄʀᴇᴅɪᴛs​", callback_data="Wiki_credit"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="ᴍᴜsɪᴄᴘʟᴀʏᴇʀ​", callback_data="source_"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="ɢᴏ ʙᴀᴄᴋ​", callback_data="Wiki_back"
+                        ),
+                    ],
                 ]
             ),
         )
-    elif query.data == "wiki_back":
+    elif query.data == "Wiki_back":
         first_name = update.effective_user.first_name
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT.format(
+                escape_markdown(first_name),
+                escape_markdown(uptime),
+                sql.num_users(),
+                sql.num_chats(),
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=True,
         )
 
-    elif query.data == "wiki_admin":
+    elif query.data == "Wiki_admin":
         query.message.edit_text(
-            text=f"*à¹ Let's make your group bit effective now*"
-            "\nCongragulations, WikiRobot now ready to manage your group."
+            text=f"*๏ Ayo buat grup Anda sedikit efektif sekarang*"
+            f"\nSelamat, {dispatcher.bot.first_name} sekarang siap untuk mengelola grup Anda."
             "\n\n*Admin Tools*"
-            "\nBasic Admin tools help you to protect and powerup your group."
-            "\nYou can ban members, Kick members, Promote someone as admin through commands of bot."
-            "\n\n*Greetings*"
-            "\nLets set a welcome message to welcome new users coming to your group."
-            "\nsend `/setwelcome [message]` to set a welcome message!",
+            "\nAlat Admin dasar membantu Anda melindungi dan memperkuat grup Anda."
+            "\nAnda dapat mencekal anggota, anggota Kick, Promosikan seseorang sebagai admin melalui perintah bot."
+            "\n\n*Salam pembuka*"
+            "\nMari atur pesan selamat datang untuk menyambut pengguna baru yang datang ke grup Anda."
+            "\nmengirim `/setwelcome [message]` untuk mengatur pesan selamat datang!",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="wiki_")]]
+                [[InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ​", callback_data="Wiki_")]]
             ),
         )
 
-    elif query.data == "wiki_notes":
+    elif query.data == "Wiki_notes":
         query.message.edit_text(
-            text=f"<b>à¹ Setting up notes</b>"
-            f"\nYou can save message/media/audio or anything as notes"
-            f"\nto get a note simply use # at the beginning of a word"
-            f"\n\nYou can also set buttons for notes and filters (refer help menu)",
+            text=f"<b>๏ Menyiapkan catatan</b>"
+            f"\nAnda dapat menyimpan message/media/audio atau apa pun sebagai catatan"
+            f"\nuntuk mendapatkan catatan cukup gunakan # di awal kata"
+            f"\n\nAnda juga dapat mengatur tombol untuk catatan dan filter (lihat menu bantuan)",
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="wiki_")]]
+                [[InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ​", callback_data="Wiki_")]]
             ),
         )
-    elif query.data == "wiki_support":
+    elif query.data == "Wiki_support":
         query.message.edit_text(
-            text="*à¹ wiki support chats*"
-            "\nJoin My Support Group/Channel for see or report a problem on wiki.",
+            text=f"*๏ {dispatcher.bot.first_name} support chats*"
+            "\nJoin My Support Group/Channel for see or report a problem on Wiki.",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Support", url="t.me/wikisupport"),
-                    InlineKeyboardButton(text="Updates", url="https://t.me/WikiProjects"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="wiki_"),
-                 
-                 ]
+                    [
+                        InlineKeyboardButton(text="sᴜᴘᴘᴏʀᴛ​", url="t.me/WikiTapiGroup"),
+                        InlineKeyboardButton(
+                            text="ᴜᴘᴅᴀᴛᴇs​", url="https://t.me/WikiTapiChannel"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ​", callback_data="Wiki_"),
+                    ],
                 ]
             ),
         )
 
-
-    elif query.data == "wiki_credit":
+    elif query.data == "Wiki_credit":
         query.message.edit_text(
-            text=f"à¹ Credis for wiki\n"
-            "\nHere Developers Making And Give Inspiration For Made The WikiRobot",
-            parse_mode=ParseMode.MARKDOWN,
+            text=f"<b>๏ Credis for Wiki W</b>\n"
+            f"\nDi Sini Para Suhu Dan Saya Ikut²na😑",
+            parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="sena-ex", url="https://github.com/kennedy-ex"),
-                    InlineKeyboardButton(text="TheHamkerCat", url="https://github.com/TheHamkerCat"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Feri", url="https://github.com/FeriEXP"),
-                    InlineKeyboardButton(text="riz-ex", url="https://github.com/riz-ex"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Anime Kaizoku", url="https://github.com/animekaizoku"),
-                    InlineKeyboardButton(text="TheGhost Hunter", url="https://github.com/HuntingBots"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Inuka Asith", url="https://github.com/inukaasith"),
-                    InlineKeyboardButton(text="Noob-Kittu", url="https://github.com/noob-kittu"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Queen Arzoo", url="https://github.com/QueenArzoo"),
-                    InlineKeyboardButton(text="Paul Larsen", url="https://github.com/PaulSonOfLars"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="wiki_"),
-                 ]
+                    [
+                        InlineKeyboardButton(text="Wiki W", url="t.me/WikiTapiOrang"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="Wiki", url="t.me/Wiki"),
+                        InlineKeyboardButton(text="Skyzo", url="t.me/xflskyzo"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ​", callback_data="Wiki_"),
+                    ],
                 ]
             ),
         )
+
 
 def Source_about_callback(update, context):
     query = update.callback_query
     if query.data == "source_":
         query.message.edit_text(
-            text="à¹â€ºâ€º This advance command for Musicplayer."
-            "\n\nà¹ Command for admins only."
-            "\n â€¢ `/reload` - For refreshing the adminlist."
-            "\n â€¢ `/pause` - To pause the playback."
-            "\n â€¢ `/resume` - To resuming the playback You've paused."
-            "\n â€¢ `/skip` - To skipping the player."
-            "\n â€¢ `/end` - For end the playback."
-            "\n â€¢ `/musicplayer <on/off>` - Toggle for turn ON or turn OFF the musicplayer."
-            "\n\nà¹ Command for all members."
-            "\n â€¢ `/play` <query /reply audio> - Playing music via YouTube."
-            "\n â€¢ `/playlist` - To playing a playlist of groups or your personal playlist",
+            text="๏›› Perintah lanjutan ini untuk Pemutar Musik.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="Go Back", callback_data="wiki_")
-                 ]
+                    [
+                        InlineKeyboardButton(text="CD Music", url="https://t.me/WikiTapiChannel/138"),
+                        InlineKeyboardButton(text="CD Dev", url="https://t.me/WikiTapiChannel/139"),
+                        InlineKeyboardButton(text="CD Stream", url="https://t.me/WikiTapiChannel/140"),
+                    ],
+                    [
+                        InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ​", callback_data="Wiki_"),
+                    ],
                 ]
             ),
         )
     elif query.data == "source_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT.format(
+                escape_markdown(first_name),
+                escape_markdown(uptime),
+                sql.num_users(),
+                sql.num_chats(),
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=True,
         )
+
 
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
@@ -556,7 +556,7 @@ def get_help(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Help",
+                            text="ʜᴇʟᴘ & ᴄᴏᴍᴍᴀɴᴅ​",
                             url="t.me/{}?start=help".format(context.bot.username),
                         )
                     ]
@@ -577,7 +577,7 @@ def get_help(update: Update, context: CallbackContext):
             chat.id,
             text,
             InlineKeyboardMarkup(
-                [[InlineKeyboardButton(text="Go Back", callback_data="help_back")]]
+                [[InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ​", callback_data="help_back")]]
             ),
         )
 
@@ -594,14 +594,14 @@ def send_settings(chat_id, user_id, user=False):
             )
             dispatcher.bot.send_message(
                 user_id,
-                "These are your current settings:" + "\n\n" + settings,
+                "Ini adalah pengaturan Anda saat ini:" + "\n\n" + settings,
                 parse_mode=ParseMode.MARKDOWN,
             )
 
         else:
             dispatcher.bot.send_message(
                 user_id,
-                "Seems like there aren't any user specific settings available :'(",
+                "Sepertinya tidak ada pengaturan khusus pengguna yang tersedia :'(",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -610,7 +610,7 @@ def send_settings(chat_id, user_id, user=False):
             chat_name = dispatcher.bot.getChat(chat_id).title
             dispatcher.bot.send_message(
                 user_id,
-                text="Which module would you like to check {}'s settings for?".format(
+                text="Modul mana yang ingin Anda periksa {} pengaturan untuk?".format(
                     chat_name
                 ),
                 reply_markup=InlineKeyboardMarkup(
@@ -620,8 +620,8 @@ def send_settings(chat_id, user_id, user=False):
         else:
             dispatcher.bot.send_message(
                 user_id,
-                "Seems like there aren't any chat settings available :'(\nSend this "
-                "in a group chat you're admin in to find its current settings!",
+                "Sepertinya tidak ada pengaturan obrolan yang tersedia :'(\nKirim ini "
+                "dalam obrolan grup tempat Anda menjadi admin untuk menemukan pengaturannya saat ini!",
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -649,7 +649,7 @@ def settings_button(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Go Back",
+                                text="ɢᴏ ʙᴀᴄᴋ​",
                                 callback_data="stngs_back({})".format(chat_id),
                             )
                         ]
@@ -662,8 +662,8 @@ def settings_button(update: Update, context: CallbackContext):
             curr_page = int(prev_match.group(2))
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
-                "Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(chat.title),
+                "Hai, yang di sana! Ada beberapa pengaturan untuk {} - pergi ke depan dan memilih apa "
+                "kamu tertarik dengan.".format(chat.title),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(
                         curr_page - 1, CHAT_SETTINGS, "stngs", chat=chat_id
@@ -676,8 +676,8 @@ def settings_button(update: Update, context: CallbackContext):
             next_page = int(next_match.group(2))
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
-                "Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(chat.title),
+                "Hai, yang di sana! Ada beberapa pengaturan untuk {} - pergi ke depan dan memilih apa "
+                "kamu tertarik dengan.".format(chat.title),
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(
                         next_page + 1, CHAT_SETTINGS, "stngs", chat=chat_id
@@ -689,8 +689,8 @@ def settings_button(update: Update, context: CallbackContext):
             chat_id = back_match.group(1)
             chat = bot.get_chat(chat_id)
             query.message.reply_text(
-                text="Hi there! There are quite a few settings for {} - go ahead and pick what "
-                "you're interested in.".format(escape_markdown(chat.title)),
+                text="Hai, yang di sana! Ada beberapa pengaturan untuk {} - pergi ke depan dan memilih apa "
+                "kamu tertarik dengan.".format(escape_markdown(chat.title)),
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
                     paginate_modules(0, CHAT_SETTINGS, "stngs", chat=chat_id)
@@ -702,9 +702,9 @@ def settings_button(update: Update, context: CallbackContext):
         query.message.delete()
     except BadRequest as excp:
         if excp.message not in [
-            "Message is not modified",
+            "Pesan tidak diubah",
             "Query_id_invalid",
-            "Message can't be deleted",
+            "Pesan tidak dapat dihapus",
         ]:
             LOGGER.exception("Exception in settings buttons. %s", str(query.data))
 
@@ -717,14 +717,14 @@ def get_settings(update: Update, context: CallbackContext):
     # ONLY send settings in PM
     if chat.type != chat.PRIVATE:
         if is_user_admin(chat, user.id):
-            text = "Click here to get this chat's settings, as well as yours."
+            text = "Klik di sini untuk mendapatkan pengaturan obrolan ini, begitu juga milikmu."
             msg.reply_text(
                 text,
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="Settings",
+                                text="sᴇᴛᴛɪɴɢs​",
                                 url="t.me/{}?start=stngs_{}".format(
                                     context.bot.username, chat.id
                                 ),
@@ -749,9 +749,9 @@ def donate(update: Update, context: CallbackContext):
             DONATE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
 
-        if OWNER_ID != 1606221784:
+        if OWNER_ID != 2133434438:
             update.effective_message.reply_text(
-                "I'm free for everyone â¤ï¸ If you wanna make me smile, just join"
+                "Saya bebas untuk semua orang ❤️ Jika Anda ingin membuat saya tersenyum, bergabung saja"
                 "[My Channel]({})".format(DONATION_LINK),
                 parse_mode=ParseMode.MARKDOWN,
             )
@@ -765,11 +765,11 @@ def donate(update: Update, context: CallbackContext):
             )
 
             update.effective_message.reply_text(
-                "I've PM'ed you about donating to my creator!"
+                "Saya telah PM Anda tentang menyumbang ke pencipta saya!"
             )
         except Unauthorized:
             update.effective_message.reply_text(
-                "Contact me in PM first to get donation information."
+                "Hubungi saya di PM dulu untuk mendapatkan informasi donasi."
             )
 
 
@@ -797,13 +797,13 @@ def main():
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.sendMessage(
-                f"@{SUPPORT_CHAT}", 
-                "ðŸ‘‹ Hi, i'm alive.",
-                parse_mode=ParseMode.MARKDOWN
+                f"@{SUPPORT_CHAT}",
+                f"""**Wiki W Dimulai!**""",
+                parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
             LOGGER.warning(
-                "Bot isnt able to send message to support_chat, go and check!"
+                "Bot tidak dapat mengirim pesan ke support_chat, pergi dan periksa!"
             )
         except BadRequest as e:
             LOGGER.warning(e.message)
@@ -822,7 +822,7 @@ def main():
     )
 
     about_callback_handler = CallbackQueryHandler(
-        wiki_about_callback, pattern=r"wiki_", run_async=True
+        Wiki_about_callback, pattern=r"Wiki_", run_async=True
     )
 
     source_callback_handler = CallbackQueryHandler(
