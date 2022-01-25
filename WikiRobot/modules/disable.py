@@ -2,9 +2,9 @@ import importlib
 from typing import Union
 
 from future.utils import string_types
-from WikiRobot import dispatcher
-from WikiRobot.modules.helper_funcs.handlers import CMD_STARTERS, SpamChecker
-from WikiRobot.modules.helper_funcs.misc import is_module_loaded
+from SiestaRobot import dispatcher
+from SiestaRobot.modules.helper_funcs.handlers import CMD_STARTERS, SpamChecker
+from SiestaRobot.modules.helper_funcs.misc import is_module_loaded
 from telegram import ParseMode, Update
 from telegram.ext import (
     CallbackContext,
@@ -14,6 +14,7 @@ from telegram.ext import (
     RegexHandler,
 )
 from telegram.utils.helpers import escape_markdown
+from SiestaRobot.modules.language import gs
 
 CMD_STARTERS = tuple(CMD_STARTERS)
 
@@ -22,12 +23,12 @@ FILENAME = __name__.rsplit(".", 1)[-1]
 # If module is due to be loaded, then setup all the magical handlers
 if is_module_loaded(FILENAME):
 
-    from WikiRobot.modules.helper_funcs.chat_status import (
+    from SiestaRobot.modules.helper_funcs.chat_status import (
         connection_status,
         is_user_admin,
         user_admin,
     )
-    from WikiRobot.modules.sql import disable_sql as sql
+    from SiestaRobot.modules.sql import disable_sql as sql
 
     DISABLE_CMDS = []
     DISABLE_OTHER = []
@@ -317,17 +318,9 @@ if is_module_loaded(FILENAME):
         return build_curr_disabled(chat_id)
 
 
-    __help__ = """
-❂ /cmds*:* check the current status of disabled commands
+    def helps(chat):
+        return gs(chat, "disabling_help")
 
-*Admins only:*
-
-❂ /enable <cmd name>*:* enable that command
-❂ /disable <cmd name>*:* disable that command
-❂ /enablemodule <module name>*:* enable all commands in that module
-❂ /disablemodule <module name>*:* disable all commands in that module
-❂ /listcmds*:* list all possible toggleable commands
-"""
 
     DISABLE_HANDLER = CommandHandler("disable", disable, run_async=True)
     DISABLE_MODULE_HANDLER = CommandHandler(

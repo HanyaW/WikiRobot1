@@ -13,23 +13,24 @@ from telegram.ext import (
     Filters,
 )
 from telegram.utils.helpers import mention_html, escape_markdown
-from WikiRobot import dispatcher, LOGGER, DRAGONS
-from WikiRobot.modules.disable import DisableAbleCommandHandler
-from WikiRobot.modules.helper_funcs.handlers import MessageHandlerChecker
-from WikiRobot.modules.helper_funcs.chat_status import user_admin
-from WikiRobot.modules.helper_funcs.extraction import extract_text
-from WikiRobot.modules.helper_funcs.filters import CustomFilters
-from WikiRobot.modules.helper_funcs.misc import build_keyboard_parser
-from WikiRobot.modules.helper_funcs.msg_types import get_filter_type
-from WikiRobot.modules.helper_funcs.string_handling import (
+from SiestaRobot import dispatcher, LOGGER, DRAGONS
+from SiestaRobot.modules.disable import DisableAbleCommandHandler
+from SiestaRobot.modules.helper_funcs.handlers import MessageHandlerChecker
+from SiestaRobot.modules.helper_funcs.chat_status import user_admin
+from SiestaRobot.modules.helper_funcs.extraction import extract_text
+from SiestaRobot.modules.helper_funcs.filters import CustomFilters
+from SiestaRobot.modules.helper_funcs.misc import build_keyboard_parser
+from SiestaRobot.modules.helper_funcs.msg_types import get_filter_type
+from SiestaRobot.modules.helper_funcs.string_handling import (
     split_quotes,
     button_markdown_parser,
     escape_invalid_curly_brackets,
     markdown_to_html,
 )
-from WikiRobot.modules.sql import cust_filters_sql as sql
-from WikiRobot.modules.connection import connected
-from WikiRobot.modules.helper_funcs.alternate import send_message, typing_action
+from SiestaRobot.modules.sql import cust_filters_sql as sql
+from SiestaRobot.modules.connection import connected
+from SiestaRobot.modules.helper_funcs.alternate import send_message, typing_action
+from SiestaRobot.modules.language import gs
 
 HANDLER_GROUP = 10
 
@@ -606,30 +607,8 @@ def __chat_settings__(chat_id, user_id):
     return "There are `{}` custom filters here.".format(len(cust_filters))
 
 
-__help__ = """
-❂ /filters*:* List all active filters saved in the chat.
-*Admin only:*
-❂ /filter <keyword> <reply message>*:* Add a filter to this chat. The bot will now reply that message whenever 'keyword'\
-is mentioned. If you reply to a sticker with a keyword, the bot will reply with that sticker. NOTE: all filter \
-keywords are in lowercase. If you want your keyword to be a sentence, use quotes. eg: /filter "hey there" How you \
-doin?
- Separate diff replies by `%%%` to get random replies
- *Example:* 
- `/filter "filtername"
- Reply 1
- %%%
- Reply 2
- %%%
- Reply 3`
-
-❂ /stop <filter keyword>*:* Stop that filter.
-
-*Chat creator only:*
-
-❂ /removeallfilters*:* Remove all chat filters at once.
-*Note*: Filters also support markdown formatters like: {first}, {last} etc.. and buttons.
-Check /markdownhelp to know more!
-"""
+def helps(chat):
+    return gs(chat, "filters_help")
 
 __mod_name__ = "Filters"
 

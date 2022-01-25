@@ -1,9 +1,9 @@
 import html
 
-from WikiRobot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
-from WikiRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from WikiRobot.modules.log_channel import loggable
-from WikiRobot.modules.sql import reporting_sql as sql
+from SiestaRobot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
+from SiestaRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from SiestaRobot.modules.log_channel import loggable
+from SiestaRobot.modules.sql import reporting_sql as sql
 from telegram import Chat, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
@@ -14,6 +14,7 @@ from telegram.ext import (
     MessageHandler,
 )
 from telegram.utils.helpers import mention_html
+from SiestaRobot.modules.language import gs
 
 REPORT_GROUP = 12
 REPORT_IMMUNE_USERS = DRAGONS + TIGERS + WOLVES
@@ -229,7 +230,7 @@ def buttons(update: Update, context: CallbackContext):
         try:
             bot.kickChatMember(splitter[0], splitter[2])
             bot.unbanChatMember(splitter[0], splitter[2])
-            query.aswer("✅ Succesfully kicked")
+            query.answer("✅ Succesfully kicked")
             return ""
         except Exception as err:
             query.answer("🛑 Failed to Kick")
@@ -264,16 +265,9 @@ def buttons(update: Update, context: CallbackContext):
             query.answer("🛑 Failed to delete message!")
 
 
-__help__ = """
-❂ /report <reason>*:* reply to a message to report it to admins.
-❂ @admin*:* reply to a message to report it to admins.
-*NOTE:* Neither of these will get triggered if used by admins.
+def helps(chat):
+    return gs(chat, "reports_help")
 
-*Admins only:*
-❂ /reports <on/off>*:* change report setting, or view current status.
-❂ If done in pm, toggles your status.
-❂ If in group, toggles that groups's status.
-"""
 
 SETTING_HANDLER = CommandHandler("reports", report_setting, run_async=True)
 REPORT_HANDLER = CommandHandler(
@@ -282,6 +276,7 @@ REPORT_HANDLER = CommandHandler(
 ADMIN_REPORT_HANDLER = MessageHandler(
     Filters.regex(r"(?i)@admin(s)?"), report, run_async=True
 )
+
 REPORT_BUTTON_USER_HANDLER = CallbackQueryHandler(
     buttons, pattern=r"report_", run_async=True
 )

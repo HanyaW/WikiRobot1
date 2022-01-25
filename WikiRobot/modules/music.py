@@ -14,8 +14,8 @@ from tswift import Song
 from yt_dlp import YoutubeDL
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
-from WikiRobot.utils.pluginhelper import get_text, progress
-from WikiRobot import pbot, arq
+from SiestaRobot.utils.pluginhelper import get_text, progress
+from SiestaRobot import pbot, arq
 
 async def lyrics_func(answers, text):
     song = await arq.lyrics(text)
@@ -127,6 +127,14 @@ async def ytmusic(client, message: Message):
         with YoutubeDL(opts) as ytdl:
             infoo = ytdl.extract_info(url, False)
             duration = round(infoo["duration"] / 60)
+            LIMIT = "180"          
+ 
+            if duration > LIMIT:
+                await pablo.edit(
+                    f"❌ **durasinya kelamaan gabisa tot:v**"
+                )
+                is_downloading = False
+                return
             ytdl_data = ytdl.extract_info(url, download=True)
 
     except Exception as e:

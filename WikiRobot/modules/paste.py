@@ -7,10 +7,10 @@ from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton
 
-from WikiRobot import aiohttpsession as session
-from WikiRobot import pbot as app
-from WikiRobot.utils.errors import capture_err
-from WikiRobot.utils.pastebin import paste
+from SiestaRobot import aiohttpsession as session
+from SiestaRobot import pbot as app
+from SiestaRobot.utils.errors import capture_err
+from SiestaRobot.utils.pastebin import paste
 
 __mod_name__ = "Paste​"
 

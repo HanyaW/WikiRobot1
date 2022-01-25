@@ -5,14 +5,14 @@ import os
 import heroku3
 import requests
 
-from WikiRobot import telethn as borg, HEROKU_APP_NAME, HEROKU_API_KEY, OWNER_ID
-from WikiRobot.events import register
+from SiestaRobot import telethn as borg, HEROKU_APP_NAME, HEROKU_API_KEY, OWNER_ID
+from SiestaRobot.events import register
 
 heroku_api = "https://api.heroku.com"
 Heroku = heroku3.from_key(HEROKU_API_KEY)
 
 
-@register(pattern="^/(set|see|del) var(?: |$)(.*)(?: |$)([\s\S]*)")
+@register(pattern="^/(set|see|del) var(?: |$)(?: |$)([\s\S]*)")
 async def variable(var):
     if var.fwd_from:
         return
@@ -188,7 +188,7 @@ async def _(dyno):
         dyno.chat_id,
         "logs.txt",
         reply_to=dyno.id,
-        caption="Emiko logs.",
+        caption="Siesta logs.",
     )
 
     await asyncio.sleep(5)

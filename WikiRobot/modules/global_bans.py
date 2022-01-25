@@ -13,9 +13,9 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import WikiRobot.modules.sql.global_bans_sql as sql
-from WikiRobot.modules.sql.users_sql import get_user_com_chats
-from WikiRobot import (
+import SiestaRobot.modules.sql.global_bans_sql as sql
+from SiestaRobot.modules.sql.users_sql import get_user_com_chats
+from SiestaRobot import (
     DEV_USERS,
     EVENT_LOGS,
     OWNER_ID,
@@ -29,16 +29,17 @@ from WikiRobot import (
     sw,
     dispatcher,
 )
-from WikiRobot.modules.helper_funcs.chat_status import (
+from SiestaRobot.modules.helper_funcs.chat_status import (
     is_user_admin,
     support_plus,
     user_admin,
 )
-from WikiRobot.modules.helper_funcs.extraction import (
+from SiestaRobot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from WikiRobot.modules.helper_funcs.misc import send_to_list
+from SiestaRobot.modules.helper_funcs.misc import send_to_list
+from SiestaRobot.modules.language import gs
 
 GBAN_ENFORCE_GROUP = 6
 
@@ -537,16 +538,8 @@ def __chat_settings__(chat_id, user_id):
     return f"This chat is enforcing *gbans*: `{sql.does_chat_gban(chat_id)}`."
 
 
-__help__ = f"""
-*Admins only:*
-❂ /antispam <on/off/yes/no>: Will toggle our antispam tech or return your current settings.
-Anti-Spam, used by bot devs to ban spammers across all groups. This helps protect \
-you and your groups by removing spam flooders as quickly as possible.
-Note: Users can appeal gbans or report spammers at @{SUPPORT_CHAT}
-❂ /flood: Get the current antiflood settings
-❂ /setflood <number/off/no>: Set the number of messages after which to take action on a user. Set to '0', 'off', or 'no' to disable.
-❂ /setfloodmode <action type>: Choose which action to take on a user who has been flooding. Options: ban/kick/mute/tban/tmute.
-"""
+def helps(chat):
+    return gs(chat, "antispam_help")
 
 GBAN_HANDLER = CommandHandler("gban", gban, run_async=True)
 UNGBAN_HANDLER = CommandHandler("ungban", ungban, run_async=True)

@@ -4,9 +4,9 @@ from traceback import format_exc
 from pyrogram import filters
 from pyrogram.types import Message
 
-from WikiRobot import arq
-from WikiRobot.utils.errors import capture_err
-from WikiRobot import pbot as app
+from SiestaRobot import arq
+from SiestaRobot.utils.errors import capture_err
+from SiestaRobot import pbot as app
 
 
 async def quotify(messages: list):
@@ -17,9 +17,6 @@ async def quotify(messages: list):
     sticker = BytesIO(sticker)
     sticker.name = "sticker.webp"
     return [True, sticker]
-
-
-
 
 
 def getArg(message: Message) -> str:
@@ -36,7 +33,7 @@ def isArgInt(message: Message) -> bool:
         return [False, 0]
 
 
-@app.on_message(filters.command("q"))
+@app.on_message(filters.command("q") & ~filters.forwarded & ~filters.bot & ~filters.edited)
 @capture_err
 async def quotly_func(client, message: Message):
     if not message.reply_to_message:
