@@ -6,9 +6,9 @@ from typing import List
 from random import randint
 
 from sqlalchemy.sql.expression import text
-from SiestaRobot.modules.helper_funcs.chat_status import user_admin
-from SiestaRobot.modules.disable import DisableAbleCommandHandler
-from SiestaRobot import (
+from WikiRobot.modules.helper_funcs.chat_status import user_admin
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot import (
     dispatcher,
     WALL_API,
 )
@@ -29,10 +29,10 @@ from telegram import (
 from telegram.error import BadRequest
 from telegram.ext.dispatcher import run_async
 from telegram.ext import CallbackContext, Filters, CommandHandler
-from SiestaRobot import StartTime
-from SiestaRobot.modules.helper_funcs.chat_status import sudo_plus
-from SiestaRobot.modules.helper_funcs.alternate import send_action, typing_action
-from SiestaRobot.modules.language import gs
+from WikiRobot import StartTime
+from WikiRobot.modules.helper_funcs.chat_status import sudo_plus
+from WikiRobot.modules.helper_funcs.alternate import send_action, typing_action
+from WikiRobot.modules.language import gs
 
 
 
