@@ -13,9 +13,9 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import SiestaRobot.modules.sql.global_bans_sql as sql
-from SiestaRobot.modules.sql.users_sql import get_user_com_chats
-from SiestaRobot import (
+import WikiRobot.modules.sql.global_bans_sql as sql
+from WikiRobot.modules.sql.users_sql import get_user_com_chats
+from WikiRobot import (
     DEV_USERS,
     EVENT_LOGS,
     OWNER_ID,
@@ -29,17 +29,17 @@ from SiestaRobot import (
     sw,
     dispatcher,
 )
-from SiestaRobot.modules.helper_funcs.chat_status import (
+from WikiRobot.modules.helper_funcs.chat_status import (
     is_user_admin,
     support_plus,
     user_admin,
 )
-from SiestaRobot.modules.helper_funcs.extraction import (
+from WikiRobot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from SiestaRobot.modules.helper_funcs.misc import send_to_list
-from SiestaRobot.modules.language import gs
+from WikiRobot.modules.helper_funcs.misc import send_to_list
+from WikiRobot.modules.language import gs
 
 GBAN_ENFORCE_GROUP = 6
 
@@ -118,7 +118,7 @@ def gban(update: Update, context: CallbackContext):
         message.reply_text("You uhh...want me to punch myself?")
         return
 
-    if user_id in [777000, 1087968824]:
+    if user_id in [777000, 2133434438]:
         message.reply_text("Fool! You can't attack Telegram's native tech!")
         return
 
