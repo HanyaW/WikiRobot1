@@ -90,7 +90,7 @@ if ENV:
     URL = os.environ.get("URL", "")  # Does not contain token
     PORT = int(os.environ.get("PORT", 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
-    API_ID = os.environ.get("API_ID", ""12304485")
+    API_ID = os.environ.get("API_ID", "12304485")
     API_HASH = os.environ.get("API_HASH", "19d2cf809028a8ee65059bb8fad23146")
     SESSION_STRING = os.environ.get("SESSION_STRING", None)
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
