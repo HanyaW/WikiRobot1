@@ -172,7 +172,7 @@ class WikiHandler:
         return _inlinequery
 
 
-emikocmd = WikiHandler(d).command
-emikomsg = WikiHandler(d).message
-emikocallback = WikiHandler(d).callbackquery
-emikoinline = WikiHandler(d).inlinequery
+wikicmd = WikiHandler(d).command
+wikimsg = WikiHandler(d).message
+wikicallback = WikiHandler(d).callbackquery
+wikiinline = WikiHandler(d).inlinequery
