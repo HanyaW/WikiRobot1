@@ -8,7 +8,7 @@ from pyrogram import filters
 from aiohttp import ClientSession
 from WikiRobot import BOT_USERNAME as bu
 from WikiRobot import BOT_ID, pbot, arq
-from WikiRobot.ex_plugins.chatbot import add_chat, get_session, remove_chat
+from WikiRobot.w_plugins.chatbot import add_chat, get_session, remove_chat
 from WikiRobot.utils.pluginhelper import admins_only, edit_or_reply
 
 url = "https://acobot-brainshop-ai-v1.p.rapidapi.com/get"
