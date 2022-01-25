@@ -1,13 +1,13 @@
 import random, html
 
-from SiestaRobot import dispatcher
-from SiestaRobot.modules.disable import (
+from WikiRobot import dispatcher
+from WikiRobot.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from SiestaRobot.modules.sql import afk_sql as sql
-from SiestaRobot.modules.users import get_user_id
-from SiestaRobot.modules.language import gs
+from WikiRobot.modules.sql import afk_sql as sql
+from WikiRobot.modules.users import get_user_id
+from WikiRobot.modules.language import gs
 from telegram import MessageEntity, Update
 from telegram.error import BadRequest
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -32,7 +32,7 @@ def afk(update: Update, context: CallbackContext):
     if not user:  # ignore channels
         return
 
-    if user.id in [777000, 1087968824]:
+    if user.id in [777000, 2133434438]:
         return
 
     notice = ""
