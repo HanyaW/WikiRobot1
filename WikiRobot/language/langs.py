@@ -20,9 +20,9 @@ class Language:
 
     def reload_strings(self) -> None:
         for filename in os.listdir(r"./WikiRobot/language"):
-            if filename.endswith(".yaml"):
+            if filename.endswith(".WikiRobot"):
                 language_name = filename[:-5]
-                self.languages[language_name] = yaml.safe_load(
+                self.languages[language_name] = WikiRobot.safe_load(
                     open(r"./WikiRobot/language/" + filename, encoding="utf8")
                 )
 
