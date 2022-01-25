@@ -38,21 +38,21 @@ logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
 
 LOGGER = logging.getLogger('[WikiRobot]')
-LOGGER.info("Wiki sedang dimulai. | Bagian Wiki Projects. | Licensed under GPLv3.")
-LOGGER.info("Tidak berafiliasi dengan anime atau Penjahat lain dengan cara apa pun.")
-LOGGER.info("Projects dipelihara oleh: github.com/Wiki28 (t.me/WikiTapiGroup)")
+LOGGER.info("Siesta is starting. | An Shiinobu Project Parts. | Licensed under GPLv3.")
+LOGGER.info("Not affiliated to other anime or Villain in any way whatsoever.")
+LOGGER.info("Project maintained by: github.com/shiinobu (t.me/saint_foire)")
 
 # if version < 3.9, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 9:
     LOGGER.error(
-        "Anda HARUS memiliki versi python setidaknya 3.6! Beberapa fitur bergantung pada ini. Bot berhenti."
+        "You MUST have a python version of at least 3.9! Multiple features depend on this. Bot quitting."
     )
     sys.exit(1)
 
 ENV = bool(os.environ.get("ENV", False))
 
 if ENV:
-    TOKEN = os.environ.get("TOKEN", "2133434438")
+    TOKEN = os.environ.get("TOKEN", None)
 
     try:
         OWNER_ID = int(os.environ.get("OWNER_ID", None))
@@ -85,13 +85,12 @@ if ENV:
 
     INFOPIC = bool(os.environ.get("INFOPIC", True))
     BOT_USERNAME = os.environ.get("BOT_USERNAME", "WikiTapiBot")
-    EVENT_LOGS = os.environ.get("EVENT_LOGS", "-1001639024354")
+    EVENT_LOGS = os.environ.get("EVENT_LOGS", "-1001612141751")
     WEBHOOK = bool(os.environ.get("WEBHOOK", False))
     URL = os.environ.get("URL", "")  # Does not contain token
     PORT = int(os.environ.get("PORT", 5000))
     CERT_PATH = os.environ.get("CERT_PATH")
-    API_ID = os.environ.get("API_ID", "12304485")
-    ERROR_LOG = os.environ.get("ERROR_LOG", None)
+    API_ID = os.environ.get("API_ID", ""12304485")
     API_HASH = os.environ.get("API_HASH", "19d2cf809028a8ee65059bb8fad23146")
     SESSION_STRING = os.environ.get("SESSION_STRING", None)
     STRING_SESSION = os.environ.get("STRING_SESSION", None)
@@ -105,7 +104,7 @@ if ENV:
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
-    OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", None)
+    OPENWEATHERMAP_ID = os.environ.get("OPENWEATHERMAP_ID", "04379643172a90ec8c81da4f337bd3cc")
     VIRUS_API_KEY = os.environ.get("VIRUS_API_KEY", None)
     NO_LOAD = os.environ.get("NO_LOAD", "translation").split()
     DEL_CMDS = bool(os.environ.get("DEL_CMDS", False))
@@ -123,8 +122,9 @@ if ENV:
     CF_API_KEY = os.environ.get("CF_API_KEY", None)
     WELCOME_DELAY_KICK_SEC = os.environ.get("WELCOME_DELAY_KICL_SEC", None)
     BOT_ID = int(os.environ.get("BOT_ID", None))
-    ARQ_API_URL = "https://thearq.tech/"
-    ARQ_API_KEY = "BCYKVF-KYQWFM-JCMORU-RZWOFQ-ARQ"
+    ARQ_API_URL = "https://thearq.tech"
+    ARQ_API_KEY = ARQ_API
+    ERROR_LOGS = os.environ.get("ERROR_LOGS")
 
     ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 
@@ -141,7 +141,7 @@ else:
     try:
         OWNER_ID = int(Config.OWNER_ID)
     except ValueError:
-        raise Exception("Milikmu OWNER_ID variabel bukan bilangan bulat yang valid.")
+        raise Exception("Your OWNER_ID variable is not a valid integer.")
 
     JOIN_LOGGER = Config.JOIN_LOGGER
     OWNER_USERNAME = Config.OWNER_USERNAME
@@ -150,22 +150,22 @@ else:
         DRAGONS = {int(x) for x in Config.DRAGONS or []}
         DEV_USERS = {int(x) for x in Config.DEV_USERS or []}
     except ValueError:
-        raise Exception("Daftar pengguna sudo atau dev Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception("Your sudo or dev users list does not contain valid integers.")
 
     try:
         DEMONS = {int(x) for x in Config.DEMONS or []}
     except ValueError:
-        raise Exception("Daftar pengguna dukungan Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception("Your support users list does not contain valid integers.")
 
     try:
         WOLVES = {int(x) for x in Config.WOLVES or []}
     except ValueError:
-        raise Exception("Daftar pengguna Anda yang masuk daftar putih tidak berisi bilangan bulat yang valid.")
+        raise Exception("Your whitelisted users list does not contain valid integers.")
 
     try:
         TIGERS = {int(x) for x in Config.TIGERS or []}
     except ValueError:
-        raise Exception("Daftar pengguna harimau Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception("Your tiger users list does not contain valid integers.")
 
     EVENT_LOGS = Config.EVENT_LOGS
     WEBHOOK = Config.WEBHOOK
@@ -174,8 +174,8 @@ else:
     CERT_PATH = Config.CERT_PATH
     API_ID = Config.API_ID
     API_HASH = Config.API_HASH
-
-    DB_URL = Config._DATABASE_URL
+    ERROR_LOGS = Config.ERROR_LOGS
+    DB_URL = Config.SQLALCHEMY_DATABASE_URI
     MONGO_DB_URI = Config.MONGO_DB_URI
     ARQ_API = Config.ARQ_API_KEY
     ARQ_API_URL = Config.ARQ_API_URL
@@ -184,7 +184,6 @@ else:
     TEMP_DOWNLOAD_DIRECTORY = Config.TEMP_DOWNLOAD_DIRECTORY
     OPENWEATHERMAP_ID = Config.OPENWEATHERMAP_ID
     NO_LOAD = Config.NO_LOAD
-    ERROR_LOG = Config.ERROR_LOG
     HEROKU_API_KEY = Config.HEROKU_API_KEY
     HEROKU_APP_NAME = Config.HEROKU_APP_NAME
     DEL_CMDS = Config.DEL_CMDS
@@ -216,18 +215,17 @@ else:
 DRAGONS.add(OWNER_ID)
 DRAGONS.add(2133434438)
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(1980553307)
 DEV_USERS.add(2133434438)
 
 if not SPAMWATCH_API:
     sw = None
-    LOGGER.warning("SpamWatch API key hilang! periksa kembali konfigurasi Anda")
+    LOGGER.warning("SpamWatch API key missing! recheck your config")
 else:
     try:
         sw = spamwatch.Client(SPAMWATCH_API)
     except:
         sw = None
-        LOGGER.warning("Tidak dapat terhubung ke SpamWatch!")
+        LOGGER.warning("Can't connect to SpamWatch!")
 
 from WikiRobot.modules.sql import SESSION
 
@@ -245,7 +243,7 @@ ubot2 = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 try:
     ubot2.start()
 except BaseException:
-    print("Userbot Error! Have you added a STRING_SESSION in deploying??")
+    print("Userbot Error ! Have you added a STRING_SESSION in deploying??")
     sys.exit(1)
 
 pbot = Client(
