@@ -1,18 +1,18 @@
 import html
-from typing import Optional
+from typing import Optional, List
 import re
 
 from telegram import Message, Chat, Update, User, ChatPermissions
 
-from WikiRobot import TIGERS, WOLVES, dispatcher
-from WikiRobot.modules.helper_funcs.chat_status import (
+from SiestaRobot import TIGERS, WOLVES, dispatcher
+from SiestaRobot.modules.helper_funcs.chat_status import (
     bot_admin,
     is_user_admin,
     user_admin,
     user_admin_no_reply,
 )
-from WikiRobot.modules.log_channel import loggable
-from WikiRobot.modules.sql import antiflood_sql as sql
+from SiestaRobot.modules.log_channel import loggable
+from SiestaRobot.modules.sql import antiflood_sql as sql
 from telegram.error import BadRequest
 from telegram.ext import (
     CallbackContext,
@@ -22,10 +22,11 @@ from telegram.ext import (
     MessageHandler,
 )
 from telegram.utils.helpers import mention_html
-from WikiRobot.modules.helper_funcs.string_handling import extract_time
-from WikiRobot.modules.connection import connected
-from WikiRobot.modules.helper_funcs.alternate import send_message
-from WikiRobot.modules.sql.approve_sql import is_approved
+from SiestaRobot.modules.helper_funcs.string_handling import extract_time
+from SiestaRobot.modules.connection import connected
+from SiestaRobot.modules.helper_funcs.alternate import send_message
+from SiestaRobot.modules.sql.approve_sql import is_approved
+from SiestaRobot.modules.language import gs
 
 FLOOD_GROUP = 3
 
@@ -53,11 +54,11 @@ def check_flood(update, context) -> str:
     try:
         getmode, getvalue = sql.get_flood_setting(chat.id)
         if getmode == 1:
-            chat.ban_member(user.id)
+            chat.kick_member(user.id)
             execstrings = "Banned"
             tag = "BANNED"
         elif getmode == 2:
-            chat.ban_member(user.id)
+            chat.kick_member(user.id)
             chat.unban_member(user.id)
             execstrings = "Kicked"
             tag = "KICKED"
@@ -71,7 +72,7 @@ def check_flood(update, context) -> str:
             tag = "MUTED"
         elif getmode == 4:
             bantime = extract_time(msg, getvalue)
-            chat.ban_member(user.id, until_date=bantime)
+            chat.kick_member(user.id, until_date=bantime)
             execstrings = "Banned for {}".format(getvalue)
             tag = "TBAN"
         elif getmode == 5:
@@ -396,6 +397,9 @@ def __chat_settings__(chat_id, user_id):
     if limit == 0:
         return "Not enforcing to flood control."
     return "Antiflood has been set to`{}`.".format(limit)
+
+def helps(chat):
+    return gs(chat, "antiflood_help")
 
 __mod_name__ = "Anti-Flood"
 

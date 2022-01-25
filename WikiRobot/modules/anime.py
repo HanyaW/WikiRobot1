@@ -5,8 +5,9 @@ import textwrap
 import bs4
 import jikanpy
 import requests
-from WikiRobot import DEV_USERS, OWNER_ID, DRAGONS, dispatcher
-from WikiRobot.modules.disable import DisableAbleCommandHandler
+from SiestaRobot import DEV_USERS, OWNER_ID, DRAGONS, dispatcher
+from SiestaRobot.modules.disable import DisableAbleCommandHandler
+from SiestaRobot.modules.language import gs
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update)
 from telegram.ext import CallbackContext, CallbackQueryHandler
@@ -551,23 +552,8 @@ def kayo(update: Update, context: CallbackContext):
     site_search(update, context, "kayo")
 
 
-__help__ = """
- ──「 Anime search 」──                           
-❂ /anime <anime>: mengembalikan informasi tentang anime.
-❂ /whatanime: mengembalikan sumber anime ketika membalas foto atau gif.                                                          
-❂ /character <character>: mengembalikan informasi tentang karakter.
-❂ /manga <manga>: mengembalikan informasi tentang manga.
-❂ /user <user>: mengembalikan informasi tentang pengguna MyAnimeList.
-❂ /upcoming: mengembalikan daftar anime baru di musim mendatang.
-❂ /airing <anime>: mengembalikan info penayangan anime.
-❂ /whatanime <anime>: membalas gif atau foto.
-❂ /kaizoku <anime>: cari anime di animekaizoku.com
-❂ /kayo <anime>: cari anime di animekayo.com
-
- 「 Anime Quotes 」
-❂ /animequotes: untuk kutipan anime secara acak sebagai foto.
-❂ /quote: kirim kutipan secara acak sebagai teks
- """
+def helps(chat):
+    return gs(chat, "anime_help")
 
 ANIME_HANDLER = DisableAbleCommandHandler("anime", anime, run_async=True)
 AIRING_HANDLER = DisableAbleCommandHandler("airing", airing, run_async=True)
