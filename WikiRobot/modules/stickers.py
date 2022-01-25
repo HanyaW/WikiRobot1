@@ -13,9 +13,9 @@ from telegram import TelegramError, Update
 from telegram.ext import CallbackContext
 from telegram.utils.helpers import mention_html
 
-from SiestaRobot import dispatcher
-from SiestaRobot.modules.disable import DisableAbleCommandHandler
-from SiestaRobot.modules.language import gs
+from WikiRobot import dispatcher
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.language import gs
 
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
