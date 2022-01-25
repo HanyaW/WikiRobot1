@@ -37,7 +37,7 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
 
-LOGGER = logging.getLogger('[EmikoRobot]')
+LOGGER = logging.getLogger('[WikiRobot]')
 LOGGER.info("Wiki sedang dimulai. | Bagian Wiki Projects. | Licensed under GPLv3.")
 LOGGER.info("Tidak berafiliasi dengan anime atau Penjahat lain dengan cara apa pun.")
 LOGGER.info("Projects dipelihara oleh: github.com/Wiki28 (t.me/WikiTapiGroup)")
@@ -52,7 +52,7 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 9:
 ENV = bool(os.environ.get("ENV", False))
 
 if ENV:
-    TOKEN = os.environ.get("TOKEN", None)
+    TOKEN = os.environ.get("TOKEN", "2133434438")
 
     try:
         OWNER_ID = int(os.environ.get("OWNER_ID", None))
