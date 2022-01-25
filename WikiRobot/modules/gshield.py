@@ -19,7 +19,7 @@ from WikiRobot.modules.sql.nsfw_watch_sql import (
     is_nsfwatch_indb,
     rmnsfwatch,
 )
-from EmikoRobot import telethn as tbot, MONGO_DB_URI, BOT_ID
+from WikiRobot import telethn as tbot, MONGO_DB_URI, BOT_ID
 
 translator = google_translator()
 MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
