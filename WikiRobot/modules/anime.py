@@ -5,9 +5,9 @@ import textwrap
 import bs4
 import jikanpy
 import requests
-from SiestaRobot import DEV_USERS, OWNER_ID, DRAGONS, dispatcher
-from SiestaRobot.modules.disable import DisableAbleCommandHandler
-from SiestaRobot.modules.language import gs
+from WikiRobot import DEV_USERS, OWNER_ID, DRAGONS, dispatcher
+from WikiRobot.modules.disable import DisableAbleCommandHandler
+from WikiRobot.modules.language import gs
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update)
 from telegram.ext import CallbackContext, CallbackQueryHandler
