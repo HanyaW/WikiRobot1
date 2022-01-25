@@ -1,9 +1,9 @@
 import html
 
-from SiestaRobot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
-from SiestaRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from SiestaRobot.modules.log_channel import loggable
-from SiestaRobot.modules.sql import reporting_sql as sql
+from WikiRobot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
+from WikiRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from WikiRobot.modules.log_channel import loggable
+from WikiRobot.modules.sql import reporting_sql as sql
 from telegram import Chat, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
@@ -14,7 +14,7 @@ from telegram.ext import (
     MessageHandler,
 )
 from telegram.utils.helpers import mention_html
-from SiestaRobot.modules.language import gs
+from WikiRobot.modules.language import gs
 
 REPORT_GROUP = 12
 REPORT_IMMUNE_USERS = DRAGONS + TIGERS + WOLVES
