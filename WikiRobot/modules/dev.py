@@ -5,7 +5,7 @@ import sys
 from contextlib import suppress
 from time import sleep
 
-import EmikoRobot
+import WikiRobot
 
 from WikiRobot import dispatcher
 from WikiRobot.modules.helper_funcs.chat_status import dev_plus
