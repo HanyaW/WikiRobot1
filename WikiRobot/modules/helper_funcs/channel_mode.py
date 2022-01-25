@@ -7,7 +7,7 @@ from telegram.inline.inlinekeyboardbutton import InlineKeyboardButton
 from telegram.inline.inlinekeyboardmarkup import InlineKeyboardMarkup
 
 from WikiRobot import DRAGONS, DEV_USERS, dispatcher
-from WikiRobot.modules.helper_funcs.decorators import siestacallback
+from WikiRobot.modules.helper_funcs.decorators import wikicallback
 
 
 class AdminPerms(Enum):
