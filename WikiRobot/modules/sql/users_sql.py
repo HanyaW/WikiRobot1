@@ -1,7 +1,7 @@
 import threading
 
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.sql import BASE, SESSION
+from WikiRobot import dispatcher
+from WikiRobot.modules.sql import BASE, SESSION
 from sqlalchemy import (
     Column,
     ForeignKey,
