@@ -20,7 +20,7 @@ from telethon.tl import functions
 from telethon.tl import types
 from telethon.tl.types import *
 
-from SiestaRobot import *
+from WikiRobot import *
 
 from WikiRobot.events import register
 from WikiRobot import telethn as tbot
